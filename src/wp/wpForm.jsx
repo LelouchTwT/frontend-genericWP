@@ -1,32 +1,46 @@
 import Grid from '../template/grid';
-import IconButton from '../template/iconButton';
 import { useCallback, useRef } from 'react';
 import axios from 'axios';
 
 function WpForm(props) {
+  const URL = 'http://localhost:3003/';
   const inputTitle = useRef(null);
   const inputResume = useRef(null);
   const inputContent = useRef(null);
   const inputImage = useRef(null);
+
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     let title = inputTitle.current.value
     let resume = inputResume.current.value
     let content = inputContent.current.value
-      .then(function (response) {
-        console.log('salvo com sucesso')
-      });
 
-    /* axios.post('http://localhost:3003/api/main',
-      {
-        title: title,
-        resume: resume,
-        content: content
+    var formData = new FormData();
+    formData.append("image", inputImage.current.files[0]);
+    axios.post(`${URL}upload`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+      .then(response => {
+        axios.post(`${URL}api/main`,
+          {
+            title: title,
+            resume: resume,
+            content: content,
+            imgPath: (response.data.files.image.path).split('\\')[2]
+
+          })
       })
-      .then(function (response) {
-        console.log('salvo com sucesso')
-      }); */
   }, [])
+
+  function refresh() {
+    axios.get(`${URL}api/main?sort=-createdAt`)
+      .then(response => {
+
+      })
+  }
+
   return (
     <form className="wpForm" onSubmit={handleSubmit}>
       <Grid cols="12 9 10">
