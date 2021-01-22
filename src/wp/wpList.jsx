@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 function WpList() {
   var [getResponse, setGetResponse] = useState();
   async function getNoticias() {
-    await axios.get('http://localhost:3003/api/main')
+    await axios.get('http://172.25.153.178:3003/api/main')
       .then(response => {
         setGetResponse(response.data);
       })
@@ -14,14 +14,16 @@ function WpList() {
   return (
     <div className="wpList">
       {getResponse && getResponse.map((noticia) => {
-        return (
-          <div>
-            <div>{noticia.title}</div>
-            <div>{noticia.resume}</div>
-            <div>{noticia.content}</div>
-            <img src={`http://localhost:3030/dynamic%20page/backend/src/uploads/${noticia.imgPath}`} alt="" />
-          </div>
-        )
+        if (noticia.status) {
+          return (
+            <div>
+              <h1 dangerouslySetInnerHTML={{ __html: noticia.title }}></h1>
+              {/* <span>{noticia.resume}</span> */}
+              <img src={`http://172.25.153.178:3030/Generic%20Wp/backend/src/uploads/${noticia.imgPath}`} alt="" />
+              <span dangerouslySetInnerHTML={{ __html: noticia.content }}></span>
+            </div>
+          )
+        }
       })}
     </div>
   )

@@ -1,12 +1,15 @@
 import { Router, Route, Redirect, hashHistory } from 'react-router';
 
-import Wp from '../wp/wp';
-import About from '../about/about';
+import WpList from '../wp/wpList';
+import WpForm from '../wp/wpForm';
 
-export default props => (
-  <Router history={hashHistory}>
-    <Route path="/noticias" component={Wp} />
-    <Route path="/about" component={About} />
-    <Redirect from="*" to="/noticias" />
-  </Router>
-)
+function WpRouter() {
+  return (
+    <Router history={hashHistory}>
+      <Route path="/addNoticia" component={WpForm} />
+      <Route path="/noticias" component={WpList} />
+      <Redirect from="*" to="/noticias" />
+    </Router>
+  )
+}
+export default WpRouter;
