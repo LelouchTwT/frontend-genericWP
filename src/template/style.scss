@@ -144,4 +144,90 @@ body {
       }
     }
   }
+
+  .wpManager {
+    margin: 0 300px;
+
+    div {
+      display         : flex;
+      justify-content : space-between;
+      background-color: #e6e6e6;
+      border-radius   : 50px;
+      box-shadow      : 1px 1px 6px rgba(30, 30, 30, .5);
+      margin          : 0 0 20px 0;
+
+      h1 {
+        font-size  : 20px;
+        font-weight: bold;
+        padding    : 15px 20px;
+        color      : #000000;
+      }
+
+      div {
+        box-shadow: none;
+        margin    : 0 25px 0 0;
+
+        button {
+          background-color: transparent;
+          border          : none;
+          outline         : none;
+          padding         : 0 10px;
+
+          div {
+            width          : 100px;
+            justify-content: left;
+            align-content  : center;
+
+            span {
+              font-weight: bold;
+            }
+
+            i {
+              cursor    : pointer;
+              font-size : 18px;
+              transition: 300ms;
+
+              &.fa-upload,
+              &.fa-download {
+                padding        : 0 10px 0 0;
+                display        : flex;
+                justify-content: space-around;
+              }
+
+            }
+
+            &:hover {
+
+              .fa-upload,
+              span {
+                color: rgb(0, 211, 53);
+              }
+            }
+
+            &:hover {
+              .fa-download {
+                color: rgb(255, 145, 0);
+              }
+            }
+
+            &:hover {
+
+              .fa-pencil-alt,
+              span {
+                color: rgb(243, 239, 0);
+              }
+            }
+
+            &:hover {
+
+              .fa-trash-alt,
+              span {
+                color: rgb(243, 0, 0);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
