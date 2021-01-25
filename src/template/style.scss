@@ -172,34 +172,57 @@ body {
           border          : none;
           outline         : none;
           padding         : 0 10px;
+          transition      : 300ms;
+          cursor          : pointer;
+
+          .fa-trash-alt {
+            transition: 300ms;
+          }
+
+          .fa-pencil-alt {
+            transition: 300ms;
+          }
+
+          i {
+            cursor    : pointer;
+            font-size : 18px;
+            transition: 300ms;
+
+            &.fa-upload,
+            &.fa-download {
+              padding        : 0 10px 0 0;
+              display        : flex;
+              justify-content: space-around;
+            }
+
+          }
 
           div {
             width          : 100px;
             justify-content: left;
             align-content  : center;
+            margin         : 0;
 
             span {
               font-weight: bold;
+              margin     : 2px 0 0 0;
             }
 
-            i {
-              cursor    : pointer;
-              font-size : 18px;
+            .unpublish {
               transition: 300ms;
+            }
 
-              &.fa-upload,
-              &.fa-download {
-                padding        : 0 10px 0 0;
-                display        : flex;
-                justify-content: space-around;
-              }
-
+            .publish {
+              transition: 300ms;
             }
 
             &:hover {
 
-              .fa-upload,
-              span {
+              .fa-upload {
+                color: rgb(0, 211, 53);
+              }
+
+              .publish {
                 color: rgb(0, 211, 53);
               }
             }
@@ -208,26 +231,66 @@ body {
               .fa-download {
                 color: rgb(255, 145, 0);
               }
-            }
 
-            &:hover {
-
-              .fa-pencil-alt,
-              span {
-                color: rgb(243, 239, 0);
+              .unpublish {
+                color: rgb(255, 145, 0);
               }
             }
 
-            &:hover {
 
-              .fa-trash-alt,
-              span {
-                color: rgb(243, 0, 0);
-              }
+
+          }
+
+          &:hover {
+
+            .fa-pencil-alt {
+              color: rgb(243, 239, 0);
             }
+          }
+
+          &:hover {
+
+            .fa-trash-alt {
+              color: rgb(243, 0, 0);
+            }
+
           }
         }
       }
     }
+  }
+}
+
+.removed-item {
+  animation: removed-item-animation .6s cubic-bezier(.55, -0.04, .91, .94) forwards;
+}
+
+@keyframes removed-item-animation {
+  from {
+    opacity  : 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity  : 0;
+    transform: scale(0);
+  }
+}
+
+@keyframes openspace {
+  to {
+    height: auto;
+  }
+}
+
+@keyframes restored-item-animation {
+  from {
+    opacity  : 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity  : 1;
+    transform: scale(1);
   }
 }

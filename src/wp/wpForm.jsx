@@ -3,7 +3,7 @@ import axios from 'axios';
 var $ = require("jquery")
 
 function WpForm(props) {
-  const URL = 'http://172.25.153.178:3003/';
+  const URL = 'http://172.25.153.166:3003/';
   const [inputTitle, setInputTitle] = useState("");
   const [inputResume, setInputResume] = useState("");
   const [inputContent, setInputContent] = useState("");
